@@ -1,0 +1,24 @@
+# UBP Attrition API — Python dependencies
+# Pinned to versions verified on Python 3.13
+#
+# Install inside a virtual environment:
+#   python -m venv venv
+#   venv\Scripts\activate          (Windows)
+#   pip install -r requirements.txt
+
+# ── API framework ──────────────────────────────────────────────────────────────
+fastapi==0.121.2
+uvicorn[standard]==0.38.0
+python-multipart==0.0.22        # required for CSV file upload endpoints
+pydantic==2.12.4
+
+# ── ML / pipeline ──────────────────────────────────────────────────────────────
+scikit-learn==1.7.2
+imbalanced-learn==0.14.1        # SMOTE for training
+category_encoders==2.9.0        # TargetEncoder for Country column
+xgboost==3.1.1                  # XGBoost model (trained in notebook)
+joblib==1.5.2                   # model serialization / deserialization
+
+# ── Data ───────────────────────────────────────────────────────────────────────
+numpy==2.3.4
+pandas==2.3.3

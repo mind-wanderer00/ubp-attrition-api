@@ -1,0 +1,21 @@
+Age,Income,CreditLimit,TotalTransactions,TotalSpend,Tenure,Gender,CardType,EducationLevel,MaritalStatus,Country
+24,280000,50000,8,3200,6,Female,Blue,Bachelor,Single,Philippines
+28,420000,80000,35,18500,14,Male,Blue,Graduate,Single,Philippines
+32,550000,120000,62,42000,24,Female,Silver,Bachelor,Married,Philippines
+35,980000,200000,91,85000,36,Male,Blue,Graduate,Married,Philippines
+38,1350000,280000,110,130000,42,Female,Gold,Post-Graduate,Married,Philippines
+41,1800000,350000,145,210000,48,Male,Gold,Graduate,Married,Singapore
+29,390000,75000,12,4100,10,Male,Blue,High School,Single,Philippines
+45,2500000,500000,180,320000,54,Female,Gold,Doctorate,Married,Philippines
+52,3500000,800000,95,280000,60,Male,Gold,Graduate,Married,Philippines
+33,670000,150000,5,900,18,Female,Silver,Bachelor,Divorced,Philippines
+27,310000,45000,55,22000,8,Male,Blue,Graduate,Single,Philippines
+48,1100000,220000,130,98000,50,Female,Silver,Post-Graduate,Married,Philippines
+60,850000,180000,40,35000,58,Male,Silver,Bachelor,Married,Philippines
+36,4200000,1000000,200,580000,44,Female,Black,Doctorate,Married,Singapore
+22,180000,30000,18,7500,3,Male,Blue,High School,Single,Philippines
+43,760000,160000,88,71000,38,Female,Silver,Graduate,Divorced,Philippines
+55,2800000,600000,70,190000,56,Male,Gold,Post-Graduate,Married,Philippines
+30,490000,95000,150,89000,20,Female,Blue,Graduate,Single,Philippines
+47,1600000,300000,3,1200,46,Male,Gold,Graduate,Married,Philippines
+39,920000,190000,42,38000,32,Female,Silver,Bachelor,Married,Philippines
