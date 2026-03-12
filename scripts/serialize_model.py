@@ -44,6 +44,7 @@ from category_encoders         import TargetEncoder
 # Shared transformers — imported from api.transformers so joblib can locate
 # the classes when the pipeline is loaded in any other module (e.g. main.py)
 from api.transformers import WinsorizationTransformer, LRFeatureEngineeringTransformer
+from scripts.monitor_drift import save_training_profile
 
 
 # ── Column Definitions (verified against notebook) ─────────────────────────────
@@ -202,6 +203,17 @@ def main():
     joblib.dump(pipeline, MODEL_PATH)
     print(f"\nPipeline saved to: {MODEL_PATH}")
     print(f"File size: {MODEL_PATH.stat().st_size / 1024:.1f} KB")
+
+    # ── Save Training Profile (PSI baseline for drift monitoring) ──────────────
+    score_train = lr.predict_proba(X_train_processed)[:, 1]
+    save_training_profile(
+        X_train        = X_train,
+        y_train        = y_train,
+        score_train    = score_train,
+        numerical_cols = BASE_NUM_COLS,
+        n_train        = len(X_train),
+    )
+
     print("\nDone. You can now start the FastAPI server.")
 
 
