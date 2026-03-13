@@ -55,8 +55,8 @@ Each response includes:
 ### 1. Prerequisites
 
 - Python 3.10+
-- The dataset file: `credit_card_attrition_dataset_copino.csv` in the project root
-  *(not included in repo — 106MB exceeds GitHub's file limit)*
+- The dataset file: `credit_card_attrition_dataset_copino.csv` is not included in repo — 106MB exceeds GitHub's file limit.
+- If you wish to replicate, just add it in the root path.
 
 ### 2. Set up environment
 
@@ -113,7 +113,7 @@ docker run -p 8000:8000 ubp-attrition-api
 python scripts/monitor_drift.py
 ```
 
-Compares recent predictions (last 30 days from `logs/predictions.csv`) against the training data profile using **Population Stability Index (PSI)** — the banking industry standard.
+Compares recent predictions (last 30 days from `logs/predictions.csv`) against the training data profile using **Population Stability Index (PSI)** metric.
 
 | PSI | Status |
 |---|---|
@@ -127,14 +127,22 @@ Reports are saved to `logs/drift_report_YYYYMMDD.txt`.
 
 ## Model notes
 
-The training dataset is a synthetic static snapshot of client demographics and aggregated transaction data. EDA confirmed near-zero discriminative signal across all features (Cohen's d < 0.03, Cramér's V < 0.01). The model achieves PR-AUC ≈ 0.05 — approximately equal to the random baseline on a 5% positive-rate dataset.
+The training dataset is a synthetic static snapshot of client demographics and aggregated transaction data. EDA confirmed near-zero discriminative signal across all features (Cohen's d < 0.03, Cramér's V < 0.01). The model achieves PR-AUC ≈ 0.05 which is approximately equal to the random baseline on a 5% positive-rate dataset. New data is needed which could provide better explainability. This pipeline is scalable and flexible that it can train on new data and output relevant predictions. 
 
-**Product recommendations are therefore anchored primarily on observable client attributes** (income tier, card type, tenure, engagement) rather than the attrition probability. See `UBP_Recommender_System_Documentation.docx` for the full rule logic.
+In other words, this pipeline is modular. Swap in a new dataset, re-run the serialization script, and the API serves the updated model with no changes to the serving layer.
+
+Kindly run serialize_model.py once new data is uploaded to root (outside the folders). 
+
+```bash
+python scripts/serialize_model.py
+```
+
+**Product recommendations are therefore anchored primarily on observable client attributes** (income tier, card type, tenure, engagement) rather than the attrition probability. See `UBP_Recommender_System_Documentation.pdf` for the full rule logic.
 
 To improve model performance, transaction-level behavioral features are needed: recency, spend trend slope, digital engagement frequency.
 
 ---
 
-## Tech stack
+## Relevant stack
 
 `FastAPI` · `scikit-learn` · `imbalanced-learn` · `category_encoders` · `XGBoost` · `pandas` · `joblib` · `pydantic` · `uvicorn`
