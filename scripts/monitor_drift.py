@@ -125,8 +125,7 @@ def run_drift_report():
     if len(df_log) < 30:
         log()
         log(f"[WARN]  Only {len(df_log)} predictions in the last {LOOKBACK_DAYS} days.")
-        log("        PSI is unreliable on small samples (< 30). Skipping.")
-        return
+        log("        PSI is less reliable on small samples (< 30). Proceeding with caution.")
 
     log(f"  Recent predictions    : {len(df_log):,}  (last {LOOKBACK_DAYS} days)")
     log(f"  Recent attrition rate : {df_log['attrition_flag'].mean():.2%}")
