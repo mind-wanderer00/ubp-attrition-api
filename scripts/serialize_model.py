@@ -65,10 +65,10 @@ CAT_TE_COLS     = ["Country"]
 
 # Numerical columns retained for LR after VIF analysis
 # (Avg_Transaction_Value, Avg_Spend_per_Tenure_Year, Spend_to_Income,
-#  Income_to_CreditLimit are DROPPED for LR — VIF violations)
+#  Income_to_CreditLimit, Credit_Utilization are DROPPED for LR — VIF violations + p=0.430, r=0.8991 with Income_to_CreditLimit)
 BASE_NUM_COLS   = ["Age", "Income", "CreditLimit", "TotalTransactions", "TotalSpend", "Tenure"]
-ENGR_NUM_COLS   = ["Credit_Utilization", "Avg_Txn_per_Tenure_Year"]
-NUM_COLS_LR     = BASE_NUM_COLS + ENGR_NUM_COLS     # 8 numerical features scaled
+ENGR_NUM_COLS   = ["Avg_Txn_per_Tenure_Year"]
+NUM_COLS_LR     = BASE_NUM_COLS + ENGR_NUM_COLS     # 7 numerical features scaled
 
 # OHE categories — explicit list ensures consistent column order at inference time
 # Sorted alphabetically to match pd.get_dummies(drop_first=True) behavior in notebook
